@@ -1,10 +1,14 @@
-# CampusUP College - исходники сайта
+# CampusUP College — сайт с финальным логотипом Compass concept
 
-Состав:
-- index.html - главная страница;
-- courses.html - раздел «Курсы»;
-- team.html - раздел «Команда»;
-- contact.html - раздел «Связаться»;
-- styles.css - адаптивная верстка, hover/active эффекты, анимация логотипа;
-- script.js - мобильное меню и демонстрационная обработка формы;
-- logo.svg - логотип проекта.
+В этой версии установлен финальный логотип №3: Compass concept.
+
+Файлы нужно загружать в корень репозитория GitHub, не папкой:
+- index.html
+- courses.html
+- team.html
+- contact.html
+- styles.css
+- script.js
+- logo.svg
+
+После загрузки на GitHub Pages обновите страницу сайта с очисткой кеша: Ctrl + F5.
