@@ -1,68 +1,156 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CampusUP College - цифровая платформа колледжа</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusUP College — цифровая платформа колледжа</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html"><img src="logo.svg" alt="CampusUP College" /></a>
-    <button class="menu-toggle" aria-label="Открыть меню">☰</button>
-    <nav class="nav">
-      <div class="dropdown"><button class="dropdown-toggle" type="button" aria-expanded="false">Разделы</button>
-        <div class="dropdown-menu">
-          <a href="courses.html">Курсы</a>
-          <a href="team.html">Команда</a>
-          <a href="contact.html">Связаться</a>
-        </div>
+<header class="site-header">
+  <a class="brand" href="index.html"><img src="logo.svg" alt="CampusUP College"></a>
+  <button class="menu-toggle" aria-label="Открыть меню">☰</button>
+  <nav class="nav">
+    <a href="index.html">Главная</a>
+    <div class="dropdown"><button class="dropdown-toggle" type="button" aria-expanded="false">Разделы</button>
+      <div class="dropdown-menu">
+        <a href="courses.html">Курсы</a>
+        <a href="team.html">Команда</a>
+        <a href="index.html#portfolio">Портфолио</a>
+        <a href="index.html#dashboard">Аналитика</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Связаться</a>
       </div>
-      <a href="#about">О платформе</a>
-      <a href="#reviews">Отзывы</a>
-      <a href="contact.html" class="nav-cta">Заявка</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <p class="eyebrow">Колледж + навыки + карьера</p>
-        <h1>Единая цифровая платформа для обучения, портфолио и роста студентов</h1>
-        <p class="lead">CampusUP College помогает студентам проходить курсы, собирать проекты, видеть прогресс и связывать обучение с будущей профессией.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="courses.html">Смотреть курсы</a>
-          <a class="button secondary" href="#about">Как это работает</a>
-        </div>
+    </div>
+    <a href="team.html">Преподаватели</a>
+    <a href="contact.html" class="nav-cta">Оставить заявку</a>
+  </nav>
+</header>
+<main>
+  <section class="hero expanded-hero">
+    <div class="hero-content">
+      <p class="eyebrow">Колледж • навыки • профессия</p>
+      <h1>Платформа колледжа для навыков, карьеры и цифрового портфолио</h1>
+      <p class="lead">CampusUP College объединяет курсы, расписание, учебные материалы, портфолио студента, аналитику прогресса и связь с преподавателями в одном пространстве.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="courses.html">Начать обучение</a>
+        <a class="button secondary" href="#dashboard">Смотреть прогресс</a>
       </div>
-      <div class="hero-card" aria-label="Дашборд прогресса">
-        <h2>Мой прогресс</h2>
-        <div class="metric-row"><span>HTML/CSS</span><strong>82%</strong></div><div class="bar"><span style="width:82%"></span></div>
-        <div class="metric-row"><span>Soft skills</span><strong>64%</strong></div><div class="bar"><span style="width:64%"></span></div>
-        <div class="metric-row"><span>Портфолио</span><strong>71%</strong></div><div class="bar"><span style="width:71%"></span></div>
+      <div class="hero-mini-stats">
+        <span><b>8</b> курсов</span>
+        <span><b>14</b> проектов</span>
+        <span><b>32</b> навыка</span>
       </div>
-    </section>
-
-    <section id="about" class="section">
-      <h2>О платформе</h2>
-      <div class="features">
-        <article><span>01</span><h3>Курсы</h3><p>Модули, материалы, задания, тесты и календарь дедлайнов.</p></article>
-        <article><span>02</span><h3>Портфолио</h3><p>Проекты, сертификаты, достижения и резюме студента.</p></article>
-        <article><span>03</span><h3>Аналитика</h3><p>Дашборд прогресса для студента, преподавателя и администрации.</p></article>
+    </div>
+    <div class="dashboard-preview" aria-label="Превью личного кабинета">
+      <div class="preview-top"><span>Личный кабинет</span><strong>72%</strong></div>
+      <div class="preview-card big">
+        <h3>Frontend</h3><div class="metric-row"><span>HTML/CSS</span><strong>82%</strong></div><div class="bar"><span style="width:82%"></span></div>
       </div>
-    </section>
+      <div class="preview-card"><h3>Soft skills</h3><div class="bar green"><span style="width:64%"></span></div></div>
+      <div class="preview-card"><h3>Python</h3><div class="bar purple"><span style="width:41%"></span></div></div>
+      <div class="next-task"><span>Следующий шаг</span><b>Сдать проект «Лендинг»</b></div>
+    </div>
+  </section>
 
-    <section id="reviews" class="section reviews">
-      <h2>Отзывы</h2>
-      <blockquote>«Стало проще видеть, какие навыки студент уже освоил, а где нужна помощь».</blockquote>
-      <blockquote>«Портфолио удобно показывать работодателю на практике».</blockquote>
-    </section>
-  </main>
+  <section class="quick-sections">
+    <a href="courses.html"><span class="dot blue"></span><b>Курсы</b><small>модули и материалы</small></a>
+    <a href="#portfolio"><span class="dot green"></span><b>Портфолио</b><small>проекты и сертификаты</small></a>
+    <a href="#dashboard"><span class="dot purple"></span><b>Аналитика</b><small>дашборд прогресса</small></a>
+    <a href="#calendar"><span class="dot orange"></span><b>Календарь</b><small>события и дедлайны</small></a>
+  </section>
 
-  <footer class="footer">
-    <p>CampusUP College © 2026</p>
-    <div><a href="#">VK</a><a href="#">Telegram</a><a href="#">YouTube</a></div>
-  </footer>
-  <script src="script.js"></script>
+  <section class="section" id="about">
+    <div class="section-title">
+      <p class="eyebrow">Как работает CampusUP</p>
+      <h2>Одна платформа вместо разрозненных файлов, чатов и таблиц</h2>
+    </div>
+    <div class="features features-4">
+      <article><span>01</span><h3>Онлайн-расписание</h3><p>Студент видит пары, консультации, дедлайны и события колледжа.</p></article>
+      <article><span>02</span><h3>База материалов</h3><p>Презентации, задания, инструкции и ссылки собраны по курсам.</p></article>
+      <article><span>03</span><h3>Рейтинг достижений</h3><p>Баллы, бейджи и сертификаты мотивируют продолжать обучение.</p></article>
+      <article><span>04</span><h3>Обратная связь</h3><p>Заявки, вопросы и предложения уходят через Google Forms.</p></article>
+    </div>
+  </section>
+
+  <section class="section soft" id="dashboard">
+    <div class="section-title two-col">
+      <div><p class="eyebrow">Аналитика</p><h2>Дашборд прогресса</h2></div>
+      <p>Раздел помогает студенту и преподавателю быстро понять, какие темы пройдены, где есть риск отставания и какие действия нужны дальше.</p>
+    </div>
+    <div class="analytics-grid">
+      <div class="stat-card"><strong>72%</strong><span>средний прогресс</span></div>
+      <div class="stat-card"><strong>18</strong><span>нуждаются в поддержке</span></div>
+      <div class="stat-card"><strong>1240</strong><span>проектов сдано</span></div>
+      <div class="chart-card">
+        <h3>Активность по неделям</h3>
+        <div class="line-chart"><i style="height:35%"></i><i style="height:58%"></i><i style="height:46%"></i><i style="height:78%"></i><i style="height:92%"></i></div>
+      </div>
+      <div class="insights-card">
+        <h3>Инсайты</h3>
+        <p><span class="dot green"></span>Лучший модуль: HTML/CSS</p>
+        <p><span class="dot orange"></span>Риск: низкая активность в FAQ</p>
+        <p><span class="dot green"></span>Портфолио заполнили 64%</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="portfolio">
+    <div class="section-title"><p class="eyebrow">Портфолио студента</p><h2>Проекты, навыки и достижения в одном профиле</h2></div>
+    <div class="portfolio-layout">
+      <div class="student-card">
+        <div class="avatar">АС</div>
+        <h3>Алина Смирнова</h3>
+        <p>Frontend • дизайн интерфейсов • soft skills</p>
+        <div class="skill-tags"><span>HTML</span><span>CSS</span><span>Figma</span><span>Команда</span></div>
+      </div>
+      <div class="project-list">
+        <article><b>Лендинг образовательной платформы</b><span>Готово • сертификат получен</span></article>
+        <article><b>Прототип личного кабинета</b><span>На проверке преподавателя</span></article>
+        <article><b>Командная презентация проекта</b><span>Запланировано на пятницу</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft" id="calendar">
+    <div class="section-title"><p class="eyebrow">Календарь</p><h2>События и дедлайны</h2></div>
+    <div class="timeline">
+      <article><time>Пн</time><b>Модуль HTML/CSS</b><span>Практика по адаптивной вёрстке</span></article>
+      <article><time>Ср</time><b>Проверка портфолио</b><span>Преподаватель оставляет комментарии</span></article>
+      <article><time>Пт</time><b>Защита мини-проекта</b><span>Презентация результата команде</span></article>
+    </div>
+  </section>
+
+  <section class="section reviews" id="reviews">
+    <div class="section-title"><p class="eyebrow">Отзывы</p><h2>Что говорят пользователи</h2></div>
+    <div class="review-grid">
+      <blockquote>«Стало проще видеть, какие навыки студент уже освоил, а где нужна помощь».<span>Преподаватель</span></blockquote>
+      <blockquote>«Портфолио удобно показывать работодателю на практике».<span>Студент</span></blockquote>
+      <blockquote>«Понятно, чем занимается студент и какие результаты уже есть».<span>Родитель</span></blockquote>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="section-title"><p class="eyebrow">FAQ</p><h2>Частые вопросы</h2></div>
+    <div class="faq-list">
+      <details open><summary>Для кого создана платформа?</summary><p>Для студентов, преподавателей, родителей и работодателей, которым важно видеть учебный прогресс и реальные проекты.</p></details>
+      <details><summary>Что показывает «Мой прогресс»?</summary><p>Процент прохождения курсов, выполненные задания, навыки, достижения и следующий рекомендуемый шаг.</p></details>
+      <details><summary>Куда отправляется заявка?</summary><p>Заявка отправляется в Google Forms и сохраняется во вкладке «Ответы».</p></details>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div>
+    <img src="logo.svg" alt="CampusUP College" class="footer-logo">
+    <p>Цифровой кампус для роста студентов колледжа.</p>
+  </div>
+  <div class="footer-links">
+    <a href="courses.html">Курсы</a>
+    <a href="team.html">Команда</a>
+    <a href="contact.html">Заявка</a>
+  </div>
+  <div class="socials"><a href="#">VK</a><a href="#">Telegram</a><a href="#">YouTube</a></div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>

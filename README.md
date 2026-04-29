@@ -1,17 +1,15 @@
-# CampusUP College — сайт с финальным логотипом Compass concept
+# CampusUP College
 
-В этой версии установлен финальный логотип №3: Compass concept.
+Учебный MVP сайта образовательной платформы колледжа.
 
-Файлы:
-- index.html
-- courses.html
-- team.html
-- contact.html
-- styles.css
-- script.js
-- logo.svg
+## Файлы
+- `index.html` — главная страница с расширенными блоками: курсы, прогресс, портфолио, аналитика, FAQ.
+- `courses.html` — каталог курсов.
+- `team.html` — команда и процесс работы.
+- `contact.html` — страница заявки с Google Forms.
+- `styles.css` — адаптивные стили.
+- `script.js` — меню, dropdown и FAQ.
+- `logo.svg` — финальный логотип Compass concept.
 
-GitHub Pages обновить страницу сайта с очисткой кеша: Ctrl + F5.
-
-## Форма заявки
-Страница contact.html содержит встроенную Google Forms-заявку через iframe. Ответы сохраняются во вкладке «Ответы» формы и могут быть выгружены в Google Sheets.
+## Публикация
+Загрузите все файлы в корень репозитория GitHub и включите GitHub Pages: `main / root`.
