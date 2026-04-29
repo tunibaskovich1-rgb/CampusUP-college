@@ -10,6 +10,3 @@
 - `styles.css` — адаптивные стили.
 - `script.js` — меню, dropdown и FAQ.
 - `logo.svg` — финальный логотип Compass concept.
-
-## Публикация
-Загрузите все файлы в корень репозитория GitHub и включите GitHub Pages: `main / root`.
