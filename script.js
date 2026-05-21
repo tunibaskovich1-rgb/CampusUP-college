@@ -25,10 +25,17 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+/*
+ * ⚡ Bolt: Cache DOM queries for FAQ toggle
+ * Optimization: Caching `document.querySelectorAll('details')` outside the event listener.
+ * Impact: Prevents querying the entire DOM on every toggle event, reducing O(N) DOM lookup to O(1) memory access.
+ * Measurement: Reduces CPU time during interaction; measurable via Chrome DevTools Performance tab.
+ */
+const detailsElements = document.querySelectorAll('details');
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
+      detailsElements.forEach(other => {
         if (other !== item) other.open = false;
       });
     }
