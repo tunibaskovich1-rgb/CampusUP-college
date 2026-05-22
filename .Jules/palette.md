@@ -1,0 +1,3 @@
+## 2024-03-24 - Missing Focus Styles on Custom Elements
+**Learning:** This app heavily uses custom rounded interactive elements (buttons, dropdowns, links) but relies on default browser focus outlines. This leads to inconsistent, poor-contrast outlines that clip awkwardly around custom border radii, severely impacting keyboard navigation accessibility.
+**Action:** Always define custom `:focus-visible` styles with an appropriate `outline-offset` and `border-radius` (if applicable) that match the brand's interactive color (#2563eb) for all focusable custom elements to ensure clear, high-contrast keyboard focus states.
