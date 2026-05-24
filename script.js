@@ -17,7 +17,8 @@ dropdowns.forEach(dropdown => {
 
 document.addEventListener('click', event => {
   dropdowns.forEach(dropdown => {
-    if (!dropdown.contains(event.target)) {
+    // Optimization: Only update DOM if dropdown is actually open to prevent unnecessary layout thrashing
+    if (!dropdown.contains(event.target) && dropdown.classList.contains('open')) {
       dropdown.classList.remove('open');
       const toggle = dropdown.querySelector('.dropdown-toggle');
       if (toggle) toggle.setAttribute('aria-expanded', 'false');
@@ -29,7 +30,8 @@ document.querySelectorAll('details').forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
       document.querySelectorAll('details').forEach(other => {
-        if (other !== item) other.open = false;
+        // Optimization: Only modify DOM if detail is actually open
+        if (other !== item && other.open) other.open = false;
       });
     }
   });
