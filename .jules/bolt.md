@@ -1,0 +1,3 @@
+## 2024-05-18 - Prevent Unnecessary DOM Mutations in Global Listeners
+**Learning:** This codebase had global event listeners (like `document.addEventListener('click', ...)` and `details` toggles) that were unconditionally mutating the DOM or attributes on every event, even when the state hadn't changed (e.g. attempting to remove an `open` class that wasn't there). This causes unnecessary layout thrashing and hurts performance, especially for frequent events like clicks anywhere on the document.
+**Action:** Always check the current state (e.g. `classList.contains('open')` or `item.open`) before mutating the DOM or setting attributes in global or frequent event listeners.
