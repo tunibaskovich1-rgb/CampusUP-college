@@ -1,0 +1,3 @@
+## 2024-03-24 - Avoid Unnecessary DOM Mutations in Global Listeners
+**Learning:** In a vanilla JS static site without virtual DOM, global `click` listeners that blindly apply DOM changes (like removing classes or updating ARIA attributes) cause expensive style recalculations on *every single click* (e.g. 100s of clicks on the page body). Similarly, querying the DOM (`querySelectorAll`) repeatedly inside event listeners causes thrashing.
+**Action:** Always check the current state (e.g., `classList.contains('open')`) before modifying the DOM to ensure we only incur layout/paint costs when a state change actually occurs. Cache `querySelectorAll` results at the top level when the element list is static.
