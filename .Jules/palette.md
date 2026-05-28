@@ -1,0 +1,3 @@
+## 2024-03-24 - High-contrast focus indicators using brand color
+**Learning:** Adding a generic `*:focus-visible` outline using the primary brand color (`#2563eb`) with an outline-offset ensures clear keyboard accessibility across all interactive elements. Avoid setting `border-radius: inherit` globally as it breaks specific component radii.
+**Action:** Always include this pattern in `styles.css` early to guarantee out-of-the-box keyboard support and meet contrast standards for focus states.
