@@ -1,0 +1,3 @@
+## 2024-05-18 - Unchecked DOM operations in global event listeners
+**Learning:** In this vanilla JS app, global click listeners were repeatedly executing `querySelectorAll` and unconditionally writing to the DOM (`classList.remove`, `setAttribute`) on *every single click* anywhere on the document, causing unnecessary reflows and layout thrashing, especially when dealing with elements like dropdowns and detail tags.
+**Action:** Always cache static NodeLists during initialization. In global event listeners, add an early return check (e.g., `if (element.classList.contains('open'))`) to ensure DOM mutations are ONLY performed when absolutely necessary (when state actually needs to change).
