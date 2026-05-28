@@ -4,9 +4,15 @@ if (menuButton && nav) {
   menuButton.addEventListener('click', () => nav.classList.toggle('open'));
 }
 
-const dropdowns = document.querySelectorAll('.dropdown');
-dropdowns.forEach(dropdown => {
-  const toggle = dropdown.querySelector('.dropdown-toggle');
+// Optimization: Cache dropdowns and their toggles to avoid repeated DOM queries
+const dropdownData = Array.from(document.querySelectorAll('.dropdown')).map(dropdown => {
+  return {
+    dropdown,
+    toggle: dropdown.querySelector('.dropdown-toggle')
+  };
+});
+
+dropdownData.forEach(({ dropdown, toggle }) => {
   if (!toggle) return;
   toggle.addEventListener('click', event => {
     event.stopPropagation();
@@ -16,20 +22,23 @@ dropdowns.forEach(dropdown => {
 });
 
 document.addEventListener('click', event => {
-  dropdowns.forEach(dropdown => {
-    if (!dropdown.contains(event.target)) {
+  dropdownData.forEach(({ dropdown, toggle }) => {
+    // Optimization: Only update DOM if the dropdown is actually open
+    if (dropdown.classList.contains('open') && !dropdown.contains(event.target)) {
       dropdown.classList.remove('open');
-      const toggle = dropdown.querySelector('.dropdown-toggle');
       if (toggle) toggle.setAttribute('aria-expanded', 'false');
     }
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+// Optimization: Cache the details NodeList
+const allDetails = document.querySelectorAll('details');
+allDetails.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
-        if (other !== item) other.open = false;
+      allDetails.forEach(other => {
+        // Optimization: Only write to DOM if it's currently open to prevent layout thrashing
+        if (other !== item && other.open) other.open = false;
       });
     }
   });
