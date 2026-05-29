@@ -1,0 +1,3 @@
+## 2024-05-24 - High-Contrast Keyboard Focus States
+**Learning:** Setting a custom `:focus-visible` global style is critical for keyboard accessibility, ensuring all interactive elements have a clear focus indicator. However, adding properties like `border-radius: inherit` inside global pseudo-classes can have unintended side-effects by improperly overriding the specific border-radius of existing elements (like buttons).
+**Action:** Always define a custom outline matching the brand primary color for `:focus-visible` to guarantee high contrast without introducing layout/style bugs by inheriting attributes globally.
