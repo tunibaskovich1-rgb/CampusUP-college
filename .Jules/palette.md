@@ -1,0 +1,3 @@
+## 2024-05-18 - Adding Global Focus Visible States
+**Learning:** For custom UI elements and static sites without default focus state configurations from frameworks, keyboard navigation can become invisible, leading to severe accessibility issues. Setting a global `*:focus-visible` ensures that all focusable elements clearly indicate focus.
+**Action:** Always define custom `:focus-visible` styles matching the primary brand color (#2563eb) for all focusable custom elements to ensure clear, high-contrast keyboard focus states, while avoiding `border-radius: inherit;` which can cause conflicts with existing rounded elements.
