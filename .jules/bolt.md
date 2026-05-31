@@ -1,0 +1,3 @@
+## 2024-05-18 - Unconditional DOM Queries in Global Listeners
+**Learning:** Performing unconditional DOM queries (like `querySelector`) inside global event listeners (like `document.addEventListener('click')`) forces unnecessary work on the browser for every click on the page, even when the interaction is unrelated to the target elements (e.g., clicking blank space). In our `script.js`, every click was executing a loop over dropdowns, and inside that loop, doing a `querySelector` and an `setAttribute`, which can cause performance bottlenecks.
+**Action:** Always check if the target elements are currently active/open (e.g., via `classList.contains`) before performing DOM queries or attribute updates. Cache static node lists globally rather than inside event callbacks.
