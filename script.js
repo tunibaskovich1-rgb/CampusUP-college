@@ -15,9 +15,11 @@ dropdowns.forEach(dropdown => {
   });
 });
 
+// ⚡ Bolt: Cache open dropdown checks to skip unnecessary DOM queries on every click
 document.addEventListener('click', event => {
   dropdowns.forEach(dropdown => {
-    if (!dropdown.contains(event.target)) {
+    // ⚡ Bolt: Only process dropdowns that are actually open and were not clicked
+    if (dropdown.classList.contains('open') && !dropdown.contains(event.target)) {
       dropdown.classList.remove('open');
       const toggle = dropdown.querySelector('.dropdown-toggle');
       if (toggle) toggle.setAttribute('aria-expanded', 'false');
@@ -25,11 +27,14 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+// ⚡ Bolt: Cache static NodeList globally rather than re-querying inside the callback
+const detailsElements = document.querySelectorAll('details');
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
-        if (other !== item) other.open = false;
+      detailsElements.forEach(other => {
+        // ⚡ Bolt: Only set open = false if it's currently open to avoid redundant state updates
+        if (other !== item && other.open) other.open = false;
       });
     }
   });

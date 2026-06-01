@@ -1,0 +1,3 @@
+## 2025-02-12 - Unconditional DOM Queries in Event Listeners
+**Learning:** Unconditional DOM queries inside global event listeners (like `document.addEventListener('click', ...)`) cause unnecessary performance overhead, especially in simple static sites. The same applies to re-querying static nodelists inside event callbacks rather than caching them.
+**Action:** Avoid unconditional DOM queries in global event listeners. Always check if the target elements are currently active/open before performing DOM queries or attribute updates. Query and cache static node lists globally instead of inside event callbacks.
