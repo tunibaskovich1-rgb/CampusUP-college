@@ -15,9 +15,13 @@ dropdowns.forEach(dropdown => {
   });
 });
 
+// Cache static nodes globally to avoid querying DOM inside event callbacks
+const allDetails = document.querySelectorAll('details');
+
 document.addEventListener('click', event => {
   dropdowns.forEach(dropdown => {
-    if (!dropdown.contains(event.target)) {
+    // Only perform DOM updates and queries if the dropdown is actually open
+    if (dropdown.classList.contains('open') && !dropdown.contains(event.target)) {
       dropdown.classList.remove('open');
       const toggle = dropdown.querySelector('.dropdown-toggle');
       if (toggle) toggle.setAttribute('aria-expanded', 'false');
@@ -25,10 +29,10 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+allDetails.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
+      allDetails.forEach(other => {
         if (other !== item) other.open = false;
       });
     }
