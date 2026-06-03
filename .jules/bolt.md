@@ -1,0 +1,3 @@
+## 2024-06-03 - [Unconditional DOM Queries in Global Event Listeners]
+**Learning:** Found a codebase-specific pattern where global event listeners, like `document.addEventListener('click', ...)`, were performing unconditional DOM queries (e.g., `querySelector`) for every single click on the document, regardless of whether the element in question was active or open.
+**Action:** When adding or optimizing event listeners on `document` or `window`, always add a conditional check to see if the targeted elements are active/open (e.g., `element.classList.contains('open')`) before performing further DOM queries or state updates inside the callback to prevent unnecessary processing on every event.
