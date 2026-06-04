@@ -1,0 +1,3 @@
+## 2024-05-24 - Unconditional DOM Queries Anti-Pattern
+**Learning:** Found a performance bottleneck specific to this codebase's architecture where global event handlers (like document clicks or details toggles) perform repeated, unconditional DOM queries (`querySelector` or `querySelectorAll`). This wastes cycles on elements that aren't currently active or don't need updates.
+**Action:** Always check if target elements are active/open before executing DOM queries or updates within global event callbacks. Cache static NodeLists globally rather than querying them inside frequent event handlers.
