@@ -1,0 +1,3 @@
+## 2024-05-24 - High-Contrast Keyboard Focus Indicators
+**Learning:** Custom `:focus-visible` styles matching the brand color (#2563eb) are critical for keyboard accessibility. They provide a clear visual indicator for screen reader and keyboard users without compromising the visual experience for mouse users (unlike `:focus`). Avoiding global inheritance rules like `border-radius: inherit` ensures specific element shapes (like rounded buttons) are respected.
+**Action:** Always define custom `:focus-visible` styles for all focusable custom elements to ensure clear, high-contrast keyboard focus states that match the primary brand color.
