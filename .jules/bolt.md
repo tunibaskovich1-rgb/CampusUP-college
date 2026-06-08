@@ -1,0 +1,3 @@
+## 2024-06-08 - [Global Event Listeners and Unnecessary DOM Queries]
+**Learning:** Attaching global event listeners (like `document.addEventListener('click')`) that execute DOM queries unconditionally on every click creates a significant hidden performance bottleneck, especially on a static site without framework-level event delegation.
+**Action:** Always verify if a target element is in an active state (e.g., checking for an `open` class) before executing expensive DOM queries or property updates within global event callbacks. Additionally, statically query and cache `NodeLists` (like `querySelectorAll('details')`) outside of event listeners when the elements aren't dynamically generated.
