@@ -1,0 +1,3 @@
+## 2024-05-18 - Missing global focus-visible styles
+**Learning:** The static project lacks global `:focus-visible` styles, resulting in no default visual indicators for keyboard navigation across various interactive elements. The default browser outlines might not have enough contrast or fit the design system.
+**Action:** Adding a global CSS rule for `:focus-visible` with `outline: 2px solid #2563eb; outline-offset: 2px;` to match the brand color and ensure consistent, accessible focus states across all interactive elements.
