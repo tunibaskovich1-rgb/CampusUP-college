@@ -1,0 +1,3 @@
+## 2024-06-12 - Missing Global Focus Indicators
+**Learning:** The project relies on default browser focus rings which can be inconsistent or have poor contrast against varying backgrounds. Keyboard users need a clear, high-contrast indicator to navigate effectively. Global `:focus` states can be disruptive for mouse users, making `:focus-visible` the optimal choice for accessibility without sacrificing visual design.
+**Action:** Always implement a custom `:focus-visible` style that matches the brand color (in this case, `#2563eb`) with an `outline-offset` (e.g., `2px`) to ensure the focus ring contrasts well and doesn't overlap element boundaries.
