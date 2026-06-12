@@ -1,0 +1,3 @@
+## 2024-06-12 - Optimizing Global Event Listeners
+**Learning:** In vanilla JavaScript projects, querying the DOM (`document.querySelectorAll`, `dropdown.querySelector`) inside high-frequency global event listeners (like `document.addEventListener('click', ...)` or within a loop triggered by an event) can lead to unnecessary main-thread blocking, particularly as the document grows.
+**Action:** Always cache static NodeLists globally (e.g., `document.querySelectorAll('details')`) instead of querying them inside event callbacks. Additionally, add fast state checks (like `dropdown.classList.contains('open')`) to early-return or avoid executing expensive DOM queries and attribute updates inside global event listeners unconditionally.
