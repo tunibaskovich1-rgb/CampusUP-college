@@ -1,0 +1,3 @@
+## 2024-06-13 - Universal Focus Indicator
+**Learning:** Found that this specific app's structure relies heavily on native interactive elements without standard focus styles across the board (links, buttons, summary, form elements). Because of the diverse range of interactive elements used (from native `<details>` to standard `<a>`), applying a universal `*:focus-visible` is necessary to ensure consistent accessibility.
+**Action:** Applied `*:focus-visible` globally in `styles.css` using the brand blue color, replacing the more narrow selectors for specific interactive elements to capture all focusable areas reliably across the application.
