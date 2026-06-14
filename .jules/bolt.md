@@ -1,0 +1,3 @@
+## 2024-06-14 - Optimize global click listener DOM queries
+**Learning:** In the CampusUP College application, global click event listeners often contain unconditional DOM queries (e.g., `dropdown.querySelector('.dropdown-toggle')`) to update attributes regardless of whether the dropdown is active. This causes unnecessary DOM operations on every click document-wide, impacting performance negatively.
+**Action:** Always check if the target elements are active/open (`dropdown.classList.contains('open')`) before executing DOM queries or attribute updates within global event callbacks. Also, cache static node references globally to avoid re-querying inside the callback.
