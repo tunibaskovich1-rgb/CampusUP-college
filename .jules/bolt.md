@@ -1,0 +1,3 @@
+## 2026-06-15 - Unconditional DOM Queries inside Global Listeners
+**Learning:** In static sites, attaching a global 'click' or 'toggle' listener that unconditionally queries the DOM or updates attributes (even when not needed) creates unnecessary reflows and overhead. For example, doing `document.querySelectorAll('details')` inside the `toggle` listener of *every* `<details>` element re-queries the DOM unnecessarily, rather than caching the NodeList once globally.
+**Action:** Always check if target elements are currently active/open before performing DOM queries or attribute updates inside global event callbacks. Cache static node lists globally instead of querying them repeatedly within event callbacks.
