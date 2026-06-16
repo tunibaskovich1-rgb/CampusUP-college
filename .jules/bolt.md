@@ -1,0 +1,3 @@
+## 2024-06-16 - Prevent layout thrashing from unconditional DOM queries in event callbacks
+**Learning:** Found a codebase-specific pattern where global event listeners (like document clicks or element toggles) were performing unconditional DOM queries (e.g. `querySelector` or `querySelectorAll`) regardless of whether the target elements were actually active or open. This can cause unnecessary layout thrashing and minor main-thread blockages during frequent user interactions.
+**Action:** Always check the element's current state (e.g. `classList.contains('open')`) before querying its children or updating attributes. Also, cache static node lists globally instead of re-querying them inside event listener callbacks.
