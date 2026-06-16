@@ -1,0 +1,3 @@
+## 2024-06-15 - Universal focus-visible accessibility
+**Learning:** This app didn't have a clear focus indicator on interactive elements by default, impacting keyboard accessibility across the whole site. It's often safer to use a universal selector `*:focus-visible` to establish a baseline outline with the brand color (#2563eb).
+**Action:** Always add a clear, high-contrast `:focus-visible` state early in project setup. A universal fallback prevents newly added elements from missing critical keyboard accessibility, while still allowing specific components to override it if needed.
