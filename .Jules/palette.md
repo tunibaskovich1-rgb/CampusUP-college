@@ -1,0 +1,5 @@
+## 2024-03-24 - Universal Focus Visible Styling
+
+**Learning:** When styling custom focus indicators for interactive elements across a diverse design system, it's often more effective to apply a universal `*:focus-visible` rule rather than narrowly targeting specific elements. This ensures a consistent, high-contrast experience for keyboard users across all components, without negatively impacting mouse users (as `:focus-visible` only triggers when necessary). Using an outline with an `outline-offset` is essential to prevent the focus ring from overlapping with the element's actual boundaries, particularly on elements with varying border radii or tight spacing.
+
+**Action:** Prefer a global `*:focus-visible` approach for base accessibility styling in projects without a comprehensive component library. Specifically, utilize the primary brand color (#2563eb) for the outline, coupled with a 2px offset, to guarantee clear visibility and maintain aesthetic coherence.
