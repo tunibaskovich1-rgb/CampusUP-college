@@ -1,0 +1,3 @@
+## 2024-06-19 - Unconditional DOM Queries in Event Listeners
+**Learning:** In the `script.js` file, DOM queries like `document.querySelectorAll('details')` and `.dropdown-toggle` were being executed unconditionally inside global event listeners (`click` and `toggle`). This causes unnecessary repaints and recalculations on every interaction, impacting performance.
+**Action:** Always cache static NodeLists globally (e.g., `const detailsElements = document.querySelectorAll('details');`) rather than re-querying them inside callbacks. Additionally, wrap targeted queries inside conditionals (e.g., check `if (dropdown.classList.contains('open'))` before querying inside a dropdown) to avoid unnecessary DOM traversals.
