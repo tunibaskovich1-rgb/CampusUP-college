@@ -1,0 +1,3 @@
+## 2024-05-24 - Universal focus-visible for accessibility
+**Learning:** In a static MVP with diverse native interactive elements (buttons, links, summary tags), targeting specific elements for keyboard focus can lead to omissions. A universal `*:focus-visible` selector with an outline and outline-offset provides a consistent, high-contrast focus indicator across the entire app without overriding specific borders or creating visual clutter for mouse users.
+**Action:** Use a universal `*:focus-visible` rule in the base CSS for static or legacy projects to guarantee baseline keyboard accessibility for all interactive elements.
