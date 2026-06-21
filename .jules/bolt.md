@@ -1,0 +1,3 @@
+## 2024-05-18 - Avoid unconditional DOM queries in global event listeners
+**Learning:** In the CampusUP College app, the global click listener was running DOM queries (`dropdown.querySelector('.dropdown-toggle')`) and modifying classes (`dropdown.classList.remove('open')`) on every click in the document, regardless of whether a dropdown was actually open or not. This is a common performance anti-pattern that can cause jank on every user interaction. Also, static nodes like `details` were repeatedly queried inside event callbacks.
+**Action:** Always check active state (`if (dropdown.classList.contains('open'))`) before performing DOM queries or class updates in global listeners. Cache static node lists globally instead of querying them inside event callbacks.
