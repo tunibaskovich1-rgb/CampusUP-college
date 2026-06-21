@@ -1,0 +1,3 @@
+## 2024-05-20 - Missing Keyboard Focus Indicators
+**Learning:** The project relies entirely on default browser focus rings which can be inconsistent or invisible depending on the browser and the background of elements. The `.dropdown:focus-within` exists, but there is no explicit `:focus-visible` outline for native interactive elements like links and buttons across the site, making keyboard navigation difficult to track.
+**Action:** Always define explicit, universal `*:focus-visible` styles using the brand's primary interactive color (`#2563eb`) with an `outline-offset` to ensure high contrast and clear visibility without breaking the component bounds.
