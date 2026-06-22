@@ -1,0 +1,3 @@
+## 2024-05-24 - Unnecessary DOM queries in global event listeners
+**Learning:** In vanilla JS apps like CampusUP College, querying the DOM on every single `click` or `toggle` event globally can be a performance bottleneck, especially as the DOM grows. The original code unconditionally looped through `dropdowns` checking for `event.target` inclusion, and on every `details` toggle it re-queried `document.querySelectorAll('details')` and unconditionally set `other.open = false`.
+**Action:** Always cache static `NodeList` collections globally if they don't change dynamically. Add guards to skip DOM manipulations (like removing classes or setting properties) if the element is already in the target state.
