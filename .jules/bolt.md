@@ -1,0 +1,3 @@
+## 2024-06-25 - Optimize global event listeners and cache DOM queries
+**Learning:** Codebase convention requires that global event listeners must avoid unconditional DOM queries. When responding to user interaction events globally, check element active states (like class `open`) before executing expensive operations. Additionally, cache static node lists globally instead of inside event callbacks.
+**Action:** Always check the active state of interactive elements in global events before making queries or attributes updates, and query static DOM collections globally rather than repeatedly during runtime.
