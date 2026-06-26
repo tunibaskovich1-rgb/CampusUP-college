@@ -1,0 +1,3 @@
+## 2024-11-20 - Global Focus-Visible Styles
+**Learning:** To ensure consistent and highly visible accessibility across the diverse range of native interactive elements in the CampusUP College application, applying a universal `*:focus-visible` selector is significantly more robust than narrowly targeting specific elements. It immediately elevates keyboard navigation usability globally without relying on custom class implementation on every new button or link.
+**Action:** Default to using the `:focus-visible` pseudo-class universally for keyboard focus states across future projects or major features, ensuring an outline offset is used so the focus ring does not clip into component borders.
