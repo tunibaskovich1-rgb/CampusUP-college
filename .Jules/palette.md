@@ -1,0 +1,3 @@
+## 2024-05-14 - Universal Focus Visible Styles
+**Learning:** For a design system with many custom interactive elements (dropdowns, summary tags, custom buttons, etc), applying a universal `*:focus-visible` rule with `outline-offset` provides a highly robust and reliable accessibility baseline, preventing edge cases where focus is lost, while avoiding the visual disruption of `:focus` for mouse users.
+**Action:** Always prefer `*:focus-visible` over narrowly targeted element selectors for keyboard focus styles, ensuring the primary brand color (`#2563eb` here) is used and an offset (e.g. `2px`) is present for contrast.
