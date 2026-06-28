@@ -17,7 +17,8 @@ dropdowns.forEach(dropdown => {
 
 document.addEventListener('click', event => {
   dropdowns.forEach(dropdown => {
-    if (!dropdown.contains(event.target)) {
+    // ⚡ Bolt: Only modify DOM if the dropdown is actually open
+    if (dropdown.classList.contains('open') && !dropdown.contains(event.target)) {
       dropdown.classList.remove('open');
       const toggle = dropdown.querySelector('.dropdown-toggle');
       if (toggle) toggle.setAttribute('aria-expanded', 'false');
@@ -25,11 +26,14 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+// ⚡ Bolt: Cache static NodeList to avoid querying DOM on every toggle
+const allDetails = document.querySelectorAll('details');
+allDetails.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
-        if (other !== item) other.open = false;
+      allDetails.forEach(other => {
+        // ⚡ Bolt: Only update 'open' property if the other element is currently open
+        if (other !== item && other.open) other.open = false;
       });
     }
   });

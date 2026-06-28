@@ -1,0 +1,3 @@
+## 2024-05-24 - Avoid unconditional DOM queries and state updates in global event listeners
+**Learning:** Performing DOM queries (like `document.querySelectorAll`) and state updates (like modifying `.open` or `.classList`) unconditionally within global event listeners (like `click` or `toggle` events on widely used elements) can cause performance bottlenecks due to unnecessary style recalculations and repaints.
+**Action:** Cache static NodeLists outside of event listeners. Before modifying DOM state (attributes or classes), always check if the element is currently active/open (e.g., `element.classList.contains('open')` or `element.open`) to avoid redundant updates.
