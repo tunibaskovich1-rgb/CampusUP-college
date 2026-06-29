@@ -1,0 +1,3 @@
+## 2024-06-29 - Optimize DOM queries and mutations in event listeners
+**Learning:** In event handlers that run frequently (like `document` click listeners), unconditional DOM mutations (like `classList.remove` and `setAttribute`) cause unnecessary layout thrashing and reflows. Additionally, querying the DOM with `querySelectorAll` inside an event listener (like `toggle`) is expensive when the collection of elements doesn't change.
+**Action:** Always add state checks (e.g., `classList.contains`) before performing DOM mutations in global event listeners. Cache DOM queries outside of event listeners when the collection of target elements is static.
