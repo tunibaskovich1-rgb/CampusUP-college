@@ -1,0 +1,3 @@
+## 2024-07-01 - Applying Universal focus-visible Styles
+**Learning:** When applying a universal `*:focus-visible` outline for accessibility to ensure all interactive elements have keyboard focus indicators, it's important to use an `outline-offset` alongside the outline. Avoid using `border-radius: inherit` in the universal selector, as this can override and strip away intentional styles from pre-existing elements with complex nested border radii or buttons. Using the main brand color (#2563eb) provides consistency and visibility.
+**Action:** Always implement `*:focus-visible` with a distinct `outline` and `outline-offset`, without overriding the element's inherent border radius structure, especially on global resets or minimal CSS architectures.
