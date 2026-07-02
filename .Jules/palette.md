@@ -1,0 +1,3 @@
+## 2024-11-20 - Custom Focus Indicator Sizing
+**Learning:** When applying a universal `*:focus-visible` outline for accessibility, inheriting `border-radius: inherit` can inadvertently override or clash with elements that intentionally lack a border-radius but sit within rounded containers. Relying purely on `outline` and `outline-offset` provides a safer and cleaner universal focus ring without breaking component shapes.
+**Action:** When creating global `:focus-visible` styles, avoid setting `border-radius: inherit;`. Instead, configure the `outline` width, color, and `outline-offset` to clearly highlight interactive elements independently of their border shape.
