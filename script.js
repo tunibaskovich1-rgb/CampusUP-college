@@ -17,7 +17,8 @@ dropdowns.forEach(dropdown => {
 
 document.addEventListener('click', event => {
   dropdowns.forEach(dropdown => {
-    if (!dropdown.contains(event.target)) {
+    // ⚡ Bolt: Added `dropdown.classList.contains('open')` check to avoid unnecessary DOM queries (querySelector) on every global click when no dropdown is actually open.
+    if (!dropdown.contains(event.target) && dropdown.classList.contains('open')) {
       dropdown.classList.remove('open');
       const toggle = dropdown.querySelector('.dropdown-toggle');
       if (toggle) toggle.setAttribute('aria-expanded', 'false');
@@ -25,11 +26,14 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+// ⚡ Bolt: Cached querySelectorAll('details') outside the event listener to avoid re-querying the entire DOM on every toggle event.
+const detailsElements = document.querySelectorAll('details');
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
-        if (other !== item) other.open = false;
+      detailsElements.forEach(other => {
+        // ⚡ Bolt: Added `other.open` check to avoid mutating DOM state unnecessarily.
+        if (other !== item && other.open) other.open = false;
       });
     }
   });
