@@ -1,0 +1,5 @@
+## 2024-07-02 - Optimize DOM queries in global event listeners
+
+**Learning:** This codebase uses global event listeners (`document.addEventListener('click', ...)`) for closing dropdown menus and `<details>` toggles. Inside these global listeners, the code was executing DOM queries (`querySelectorAll`, `querySelector`) unconditionally on *every single click* or *toggle* anywhere in the document, even when not needed (e.g. closing an already closed dropdown, or querying all `<details>` tags when toggling one). This is an inefficient anti-pattern that can cause measurable UI thread blocks in larger documents.
+
+**Action:** Cache frequently accessed DOM nodes (like `document.querySelectorAll('details')`) outside of event listeners when possible. When updating multiple elements inside a global event listener, first check a condition (e.g., `dropdown.classList.contains('open')`) before executing further DOM queries or updates to avoid unnecessary layout thrashing and DOM traversals on unrelated user interactions.
