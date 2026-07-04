@@ -1,0 +1,3 @@
+## 2024-07-04 - Optimize global DOM listeners and queries
+**Learning:** In vanilla JavaScript codebases, repeatedly executing `querySelectorAll` inside global event listeners (like document clicks) or element events (like `<details> toggle`) can block the UI thread, especially on large pages. Also, querying the DOM before validating state leads to unnecessary layout thrashing.
+**Action:** Cache frequent DOM queries (like `document.querySelectorAll('details')`) outside of event listeners. Use element state checks (like `classList.contains`) to skip expensive DOM queries entirely when the element isn't in an actionable state.
