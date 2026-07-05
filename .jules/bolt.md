@@ -1,0 +1,5 @@
+## 2025-07-05 - Global Event Listener DOM Queries
+
+**Learning:** This codebase had a specific anti-pattern where global event listeners (like document click and details toggle) were executing `querySelectorAll` DOM queries unconditionally on every single interaction. For dropdowns, `document.addEventListener('click')` would query toggles even when no dropdowns were open. For details elements, `toggle` events fired an O(N) DOM query to find siblings. This blocking behavior was degrading performance during rapid interactions.
+
+**Action:** Before executing DOM queries or applying mutations in global event listeners, always check element state (e.g., `classList.contains`) to short-circuit the operation. For elements that exist on page load and don't change dynamically (like the static `<details>` elements here), cache the `querySelectorAll` results in a variable outside the listener block to reduce O(N) DOM queries to O(1) memory lookups.
