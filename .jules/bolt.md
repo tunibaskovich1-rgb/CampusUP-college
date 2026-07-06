@@ -1,0 +1,3 @@
+## 2024-07-06 - Unnecessary DOM queries in global event listeners
+**Learning:** In vanilla JavaScript codebases, repeatedly querying the DOM within global event handlers like `document.addEventListener('click')` can cause performance issues and block the main UI thread. In this codebase, `document.querySelectorAll('details')` and `.dropdown-toggle` are being queried unnecessarily on every single click on the page.
+**Action:** Cache frequent DOM queries outside of global event loops. Also, implement element state checks (e.g., checking if `dropdown.classList.contains('open')` is true) before performing any expensive operations or further DOM lookups within the event handler to skip processing on unchanged states.
