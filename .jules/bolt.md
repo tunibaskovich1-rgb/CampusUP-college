@@ -1,0 +1,4 @@
+## 2024-07-07 - Caching DOM queries and state checks in global event listeners
+**Learning:** In vanilla JavaScript applications, placing expensive DOM queries (like `querySelectorAll`) or interacting with multiple elements directly inside high-frequency global event listeners (like `document.addEventListener('click')`) can cause unnecessary layout thrashing and UI thread blocking. This happens even if the event target is unrelated to the queried elements.
+
+**Action:** Always cache frequent DOM queries outside of event listeners. Before executing logic inside a global listener, use fast state checks (e.g., `classList.contains`) on the specific elements involved to avoid unnecessary processing and DOM manipulations when the elements are already in the expected state.
