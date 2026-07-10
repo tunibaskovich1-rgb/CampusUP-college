@@ -1,0 +1,3 @@
+## 2024-07-10 - Unnecessary DOM queries blocking UI thread on global listeners
+**Learning:** In vanilla JS setups, placing heavy DOM queries (like `querySelectorAll` or `querySelector`) inside global event listeners (like `document.addEventListener('click')` or recurring events) blocks the UI thread because these queries run on every single interaction, regardless of whether they are actually needed.
+**Action:** Always cache frequent DOM queries outside event listeners where possible. When a query must happen inside an event listener, wrap it in a fast state check (e.g., `classList.contains`) to skip execution if the target element's state indicates the query isn't needed.
