@@ -17,7 +17,11 @@ dropdowns.forEach(dropdown => {
 
 document.addEventListener('click', event => {
   dropdowns.forEach(dropdown => {
-    if (!dropdown.contains(event.target)) {
+    // ⚡ Bolt Performance Optimization:
+    // Only execute DOM queries and state modifications if the dropdown is actually open.
+    // This reduces unnecessary UI thread blocking on every click event across the document.
+    // Expected impact: Faster global click handling by avoiding redundant DOM traversal.
+    if (dropdown.classList.contains('open') && !dropdown.contains(event.target)) {
       dropdown.classList.remove('open');
       const toggle = dropdown.querySelector('.dropdown-toggle');
       if (toggle) toggle.setAttribute('aria-expanded', 'false');

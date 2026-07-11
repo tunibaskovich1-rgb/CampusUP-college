@@ -1,0 +1,3 @@
+## 2024-05-18 - Optimize Global Event Listeners
+**Learning:** In vanilla JavaScript codebases, running DOM queries (like `querySelector`) directly inside high-frequency global event listeners (like a `document.addEventListener('click')` handler attached for closing dropdowns) without any guard conditions is a significant performance bottleneck. It leads to unnecessary blocking of the main UI thread during every user interaction on the page, even interactions completely unrelated to the intended UI component.
+**Action:** Always wrap expensive DOM queries inside global event handlers with an inexpensive state check (e.g. `classList.contains('open')`), to ensure DOM traversal only happens when actively necessary.
