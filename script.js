@@ -18,17 +18,24 @@ dropdowns.forEach(dropdown => {
 document.addEventListener('click', event => {
   dropdowns.forEach(dropdown => {
     if (!dropdown.contains(event.target)) {
-      dropdown.classList.remove('open');
-      const toggle = dropdown.querySelector('.dropdown-toggle');
-      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      // ⚡ Bolt: Only query DOM and modify state if dropdown is actually open
+      // Expected impact: Eliminates unnecessary layout thrashing and DOM queries on every click
+      if (dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      }
     }
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+// ⚡ Bolt: Cache details query outside event listener
+// Expected impact: Prevents full DOM traversal every time a details element is toggled
+const detailsElements = document.querySelectorAll('details');
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
+      detailsElements.forEach(other => {
         if (other !== item) other.open = false;
       });
     }
