@@ -1,0 +1,3 @@
+## 2024-03-01 - Avoid DOM queries inside global event listeners
+**Learning:** In vanilla JavaScript, calling methods like `querySelector` inside global events like `click` triggers layout/paint recalculations, which can block the main thread and impact frontend performance. Checking the state of the component (e.g. `classList.contains('open')`) before executing further DOM queries is a simple way to bypass this bottleneck.
+**Action:** Always check component state (`classList.contains`) before executing DOM operations (`querySelector`) inside frequently triggered event listeners like `document.addEventListener('click')`. Cache full-document DOM queries (`querySelectorAll`) outside of event listeners.
