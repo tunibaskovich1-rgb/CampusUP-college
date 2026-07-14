@@ -1,0 +1,3 @@
+## 2024-05-18 - Caching DOM queries and state checks in vanilla JS
+**Learning:** In vanilla JavaScript codebases (like CampusUP College), performing frequent DOM queries (e.g., `querySelectorAll`) inside event listeners can block the main UI thread. It's also important to check the state of an element (e.g., `classList.contains`) before attempting to mutate it or execute further queries to prevent unnecessary work.
+**Action:** Always cache frequent DOM queries outside of global event listeners and use element state checks before executing DOM queries to prevent UI thread blocking.
