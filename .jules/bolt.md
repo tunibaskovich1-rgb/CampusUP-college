@@ -1,0 +1,3 @@
+## 2024-07-15 - Unoptimized DOM queries in global event listeners
+**Learning:** In vanilla JavaScript codebases (like CampusUP College), global event listeners (like document clicks for dropdowns) can easily become performance bottlenecks if they unconditionally execute DOM queries like `querySelectorAll` or `querySelector` on every interaction.
+**Action:** Always prioritize performance optimizations that cache frequent DOM queries outside of global event listeners and use element state checks (e.g., `classList.contains`) before executing DOM queries to prevent UI thread blocking.
