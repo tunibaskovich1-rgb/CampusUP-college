@@ -1,0 +1,3 @@
+## 2024-07-16 - Caching DOM queries in global event listeners
+**Learning:** In vanilla JavaScript, repeatedly querying the DOM (e.g., using `querySelectorAll`) inside global event listeners (like click or toggle) can cause performance bottlenecks. Even simple document-wide lookups can block the main thread unnecessarily when performed frequently.
+**Action:** Always cache expensive DOM queries outside of event listeners. Before performing DOM traversal inside an event loop, verify elements states (like checking `classList.contains('open')`) to avoid unneeded querying.
