@@ -1,0 +1,3 @@
+## 2024-07-17 - DOM Query Caching
+**Learning:** In vanilla JavaScript frontends, executing DOM queries (like `document.querySelectorAll`) inside global event listeners (like the document `click` listener for dropdowns) can block the UI thread on complex pages. Checking the element's local state first before querying children is crucial.
+**Action:** Always cache frequent DOM queries outside of event listeners. Before performing internal DOM queries inside event handlers, verify the element's state (e.g., using `classList.contains`) to avoid unnecessary DOM traversals.
