@@ -1,0 +1,3 @@
+## 2024-07-18 - Avoid DOM Queries in Global Listeners
+**Learning:** Performing DOM queries (`querySelectorAll` or `querySelector`) inside global event listeners (like `document.addEventListener('click', ...)`) can block the main thread and degrade rendering performance. Additionally, performing state updates or logic on elements without first checking if it's necessary (e.g., checking if a dropdown is already open before manipulating it) wastes CPU cycles.
+**Action:** Always cache frequent DOM queries outside of event listeners. Before executing DOM operations or logic inside an event listener, use element state checks (like `classList.contains`) to short-circuit unnecessary work.
