@@ -1,0 +1,3 @@
+## 2024-07-19 - Optimize global event listeners in Vanilla JS
+**Learning:** In Vanilla JS codebases without virtual DOM or component boundaries, global event listeners (like document click handlers) can trigger a huge number of redundant DOM queries (`querySelector` or `querySelectorAll`) and mutations on unrelated UI elements if we aren't careful.
+**Action:** Always wrap DOM manipulations and queries inside event handlers with a conditional check (e.g., `classList.contains`) to skip execution if the UI element is not in the active state being targeted. Cache `querySelectorAll` results outside handlers when the collection of elements won't change dynamically.
