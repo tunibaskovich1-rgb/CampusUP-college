@@ -1,0 +1,3 @@
+## 2024-07-20 - [DOM Query Caching Optimization]
+**Learning:** In vanilla JS projects, executing heavy DOM queries (like `querySelectorAll`) repeatedly inside event listeners blocks the main UI thread during interactions.
+**Action:** Always cache static or rarely-changing DOM elements outside of event listeners. Also use element state checks (like `classList.contains('open')`) before firing queries to short-circuit unnecessary logic.
