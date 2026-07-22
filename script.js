@@ -15,9 +15,15 @@ dropdowns.forEach(dropdown => {
   });
 });
 
+/*
+  ⚡ Bolt Optimization:
+  1. Dropdown close check: Adding `dropdown.classList.contains('open')` prevents an unnecessary DOM query (`dropdown.querySelector`) and class mutation inside a global click listener, reducing UI thread blocking on every click.
+  2. Caching 'details' elements: Caching `document.querySelectorAll('details')` outside the toggle event listener avoids repeated expensive DOM queries across the document when expanding/collapsing FAQ items.
+  Expected impact: Reduces DOM queries and improves click responsiveness, especially on mobile or lower-end devices.
+*/
 document.addEventListener('click', event => {
   dropdowns.forEach(dropdown => {
-    if (!dropdown.contains(event.target)) {
+    if (dropdown.classList.contains('open') && !dropdown.contains(event.target)) {
       dropdown.classList.remove('open');
       const toggle = dropdown.querySelector('.dropdown-toggle');
       if (toggle) toggle.setAttribute('aria-expanded', 'false');
@@ -25,10 +31,11 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+const detailsElements = document.querySelectorAll('details');
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
+      detailsElements.forEach(other => {
         if (other !== item) other.open = false;
       });
     }

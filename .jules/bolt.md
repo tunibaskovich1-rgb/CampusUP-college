@@ -1,0 +1,3 @@
+## 2024-07-22 - Global Event Listener DOM Anti-Pattern
+**Learning:** In vanilla JS apps, executing unconditional, non-cached DOM queries (like `querySelectorAll` or `querySelector` inside `forEach`) on every global event (like a document-level `click`) blocks the main UI thread proportionally to the document complexity.
+**Action:** Always wrap heavy DOM queries in state checks (e.g., `classList.contains('active')`) so they only run when the target element's state requires modification, and cache node lists outside listener boundaries when the DOM is static.
