@@ -15,9 +15,17 @@ dropdowns.forEach(dropdown => {
   });
 });
 
+/*
+ * ⚡ Bolt: Performance optimization
+ * Impact: Prevents unnecessary DOM traversals (querySelector) inside the global click listener
+ * by adding an early return state check. Also caches the 'details' elements to avoid
+ * repeating document.querySelectorAll on every toggle event.
+ * Measurement: Reduces main thread blocking during global clicks and details toggles.
+ */
 document.addEventListener('click', event => {
   dropdowns.forEach(dropdown => {
-    if (!dropdown.contains(event.target)) {
+    // ⚡ Bolt: Added state check to avoid DOM querying if already closed
+    if (dropdown.classList.contains('open') && !dropdown.contains(event.target)) {
       dropdown.classList.remove('open');
       const toggle = dropdown.querySelector('.dropdown-toggle');
       if (toggle) toggle.setAttribute('aria-expanded', 'false');
@@ -25,10 +33,12 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+// ⚡ Bolt: Cached details elements outside the event listener
+const detailsElements = document.querySelectorAll('details');
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
+      detailsElements.forEach(other => {
         if (other !== item) other.open = false;
       });
     }

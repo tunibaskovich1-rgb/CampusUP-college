@@ -1,0 +1,3 @@
+## 2024-07-24 - Optimizing Event Listeners in Vanilla JS
+**Learning:** In vanilla JavaScript codebases (like CampusUP College), performing redundant DOM queries (e.g. `querySelectorAll`) inside global event handlers can cause main thread blocking. I also found that querying DOM state is expensive.
+**Action:** When working on vanilla JS codebases, always cache static DOM queries outside of event listeners. Also, prior to performing query selector lookups inside an event handler, perform element state checks (like `classList.contains`) to return early and skip the expensive queries when possible.
