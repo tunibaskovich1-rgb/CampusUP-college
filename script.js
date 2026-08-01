@@ -25,10 +25,13 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+// ⚡ Bolt Optimization: Cache document.querySelectorAll('details') to prevent repeated DOM queries.
+// Impact: Eliminates O(N) DOM query per toggle event, improving interaction performance for details elements.
+const detailsElements = document.querySelectorAll('details');
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
+      detailsElements.forEach(other => {
         if (other !== item) other.open = false;
       });
     }
