@@ -17,7 +17,9 @@ dropdowns.forEach(dropdown => {
 
 document.addEventListener('click', event => {
   dropdowns.forEach(dropdown => {
-    if (!dropdown.contains(event.target)) {
+    // ⚡ Bolt Performance Optimization
+    // Expected impact: Reduces unnecessary DOM querying and state updates by only running logic if the dropdown is actually open.
+    if (dropdown.classList.contains('open') && !dropdown.contains(event.target)) {
       dropdown.classList.remove('open');
       const toggle = dropdown.querySelector('.dropdown-toggle');
       if (toggle) toggle.setAttribute('aria-expanded', 'false');
@@ -25,10 +27,13 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+// ⚡ Bolt Performance Optimization
+// Expected impact: Reduces DOM queries by caching the node list instead of querying all details on every toggle event.
+const detailsElements = document.querySelectorAll('details');
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
+      detailsElements.forEach(other => {
         if (other !== item) other.open = false;
       });
     }
