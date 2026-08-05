@@ -25,6 +25,16 @@ document.addEventListener('click', event => {
   });
 });
 
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.remove('open');
+      const toggle = dropdown.querySelector('.dropdown-toggle');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+});
+
 document.querySelectorAll('details').forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
