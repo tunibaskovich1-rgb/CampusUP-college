@@ -25,10 +25,14 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+// ⚡ Bolt Optimization: Cache the NodeList of details elements
+// Why: Prevents re-querying the DOM for all <details> elements every time a toggle event fires.
+// Expected Impact: Reduces DOM queries and improves responsiveness of accordion interactions.
+const detailsElements = document.querySelectorAll('details');
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
+      detailsElements.forEach(other => {
         if (other !== item) other.open = false;
       });
     }
