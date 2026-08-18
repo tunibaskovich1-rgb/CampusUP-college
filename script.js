@@ -25,10 +25,12 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+// ⚡ Bolt: Cache details elements DOM query to reduce unnecessary DOM lookups
+const detailsElements = document.querySelectorAll('details');
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
+      detailsElements.forEach(other => {
         if (other !== item) other.open = false;
       });
     }
