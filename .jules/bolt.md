@@ -1,0 +1,3 @@
+## 2024-05-24 - Unnecessary DOM queries in document global event listeners
+**Learning:** Found a pattern where global event listeners (like `document.addEventListener("click", ...)`) were executing expensive DOM queries (`querySelector` inside loops) on every single click, even when not needed. Also found redundant DOM queries inside toggle event listeners for elements that could be statically cached at script load.
+**Action:** Always check global event listeners (like scroll, click, mousemove) for unnecessary DOM traversals. Use early returns based on cheap state checks (like `classList.contains`) before executing expensive DOM queries. Cache NodeLists for elements that don't change dynamically to avoid re-querying the DOM.
