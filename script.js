@@ -25,10 +25,14 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+// ⚡ Bolt Performance Optimization:
+// Cache the NodeList of <details> elements to avoid redundant O(N) DOM queries on every toggle event.
+// Impact: Reduces DOM access and memory allocation during user interaction.
+const detailsElements = document.querySelectorAll('details');
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
+      detailsElements.forEach(other => {
         if (other !== item) other.open = false;
       });
     }
