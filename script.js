@@ -18,9 +18,12 @@ dropdowns.forEach(dropdown => {
 document.addEventListener('click', event => {
   dropdowns.forEach(dropdown => {
     if (!dropdown.contains(event.target)) {
-      dropdown.classList.remove('open');
-      const toggle = dropdown.querySelector('.dropdown-toggle');
-      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      // ⚡ Bolt: Only update DOM if the dropdown is currently open to prevent unnecessary mutations on every click
+      if (dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      }
     }
   });
 });
