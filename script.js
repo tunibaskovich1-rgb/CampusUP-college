@@ -25,10 +25,12 @@ document.addEventListener('click', event => {
   });
 });
 
-document.querySelectorAll('details').forEach(item => {
+const detailsElements = document.querySelectorAll('details');
+// Optimization: Cache DOM query for details elements to avoid re-querying the entire document on every toggle event. Expected Impact: Reduces DOM queries from O(N) to O(1) per toggle.
+detailsElements.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
-      document.querySelectorAll('details').forEach(other => {
+      detailsElements.forEach(other => {
         if (other !== item) other.open = false;
       });
     }
