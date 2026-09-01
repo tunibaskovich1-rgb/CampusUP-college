@@ -131,6 +131,7 @@
   </section>
 
   <section class="section" id="faq">
+    <!-- Optimization: Prevent redundant DOM queries on click and toggle. Expected Impact: Reduces main thread blocking time by avoiding O(N^2) DOM traversals and unnecessary element queries on every page interaction. -->
     <div class="section-title"><p class="eyebrow">FAQ</p><h2>Частые вопросы</h2></div>
     <div class="faq-list">
       <details open><summary>Для кого создана платформа?</summary><p>Для студентов, преподавателей, родителей и работодателей, которым важно видеть учебный прогресс и реальные проекты.</p></details>
