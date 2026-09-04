@@ -1,7 +1,11 @@
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 if (menuButton && nav) {
-  menuButton.addEventListener('click', () => nav.classList.toggle('open'));
+  menuButton.addEventListener('click', () => {
+    const isNavOpen = nav.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(isNavOpen));
+    menuButton.setAttribute('aria-label', isNavOpen ? 'Закрыть меню' : 'Открыть меню');
+  });
 }
 
 const dropdowns = document.querySelectorAll('.dropdown');
